@@ -38,13 +38,13 @@ class EmployeeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param Employee $employee
+     * @param $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Employee $employee)
+    public function show($id)
     {
         return response()->json([
-            'result' => $employee
+            'result' => $this->employee->data()
         ], 200);
     }
 
