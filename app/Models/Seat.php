@@ -29,6 +29,6 @@ class Seat extends Model
 
     public function getFloor()
     {
-        return DB::select("SELECT DISTINCT BUILDING, FLOOR FROM T_SEAT");
+        return DB::select("SELECT DISTINCT building, floor FROM T_SEAT");
     }
 }

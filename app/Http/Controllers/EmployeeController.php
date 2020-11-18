@@ -77,7 +77,6 @@ class EmployeeController extends Controller
      */
     public function getEmployeeByFloorBuilding($building, $floor)
     {
-        dd($building . ' ' . $floor);
         return response()->json([
             'result' => $this->employee->getEmployeeByFloor($building, $floor)
         ], 200);
