@@ -65,6 +65,7 @@ class EmployeeController extends Controller
      */
     public function getEmployeeCoordinate(Employee $employee)
     {
+        dd($employee);
         return response()->json([
             'result' => $employee->getCoordinate($employee->NIP)
         ], 200);
