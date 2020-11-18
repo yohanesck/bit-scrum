@@ -35,4 +35,9 @@ class Employee extends Model
     {
         return $query->with('seat', 'group');
     }
+
+    public function scopeName()
+    {
+        return DB::select('select FULL_NAME from S_EMPLOYEE');
+    }
 }

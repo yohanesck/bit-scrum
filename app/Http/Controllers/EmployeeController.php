@@ -38,13 +38,13 @@ class EmployeeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param $id
+     * @param Employee $employee
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Employee $employee)
     {
         return response()->json([
-            'result' => $this->employee->data()->get()
+            'result' => $this->employee->data()->find
         ], 200);
     }
 
@@ -69,5 +69,12 @@ class EmployeeController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function showName(Request $request)
+    {
+        return response()->json([
+            'result' => $this->employee->name()->get()
+        ], 200);
     }
 }
