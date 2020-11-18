@@ -60,7 +60,7 @@ class Employee extends Model
 
     public function getEmployeeByFloor($building, $floor)
     {
-        return DB::select("SELECT NIP, FULL_NAME
+        return DB::select("SELECT S_EMPLOYEE.NIP, S_EMPLOYEE.FULL_NAME
             FROM S_EMPLOYEE
             JOIN T_SEAT
             ON S_EMPLOYEE.NIP = T_SEAT.NIP
