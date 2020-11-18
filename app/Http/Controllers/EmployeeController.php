@@ -57,8 +57,16 @@ class EmployeeController extends Controller
      */
     public function getByName(Request $request)
     {
-        return response()->json([
-            'result' => $this->employee->byName($request->toArray()['name'])
-        ], 200);
+        $result = $this->employee->byName($request->query('name'));
+
+        if (emptyArray($result)) {
+            return response()->json([
+               'result' => 'No Data Found'
+            ], 404);
+        } else {
+            return response()->json([
+                'result' => $result
+            ], 200);
+        }
     }
 }
