@@ -58,7 +58,7 @@ class Employee extends Model
         );
     }
 
-    public function getEmployeeByFloor($request)
+    public function getEmployeeByFloor($floor, $building)
     {
         return DB::select("SELECT FULL_NAME
             FROM S_EMPLOYEE

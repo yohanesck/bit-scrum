@@ -71,14 +71,15 @@ class EmployeeController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param $building
+     * @param $floor
      * @return JsonResponse
      */
-    public function getEmployeeByFloorBuilding(Request $request)
+    public function getEmployeeByFloorBuilding($building, $floor)
     {
-        dd($request->input());
+        dd($building . ' ' . $floor);
         return response()->json([
-            'result' => $this->employee->getEmployeeByFloor($request)
+            'result' => $this->employee->getEmployeeByFloor($building, $floor)
         ], 200);
     }
 }
