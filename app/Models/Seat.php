@@ -17,8 +17,9 @@ class Seat extends Model
 
     protected $fillable = [
         'seat_id',
+        'seat_name',
         'NIP',
-        'building',
+        'building_name',
         'floor'
     ];
 
@@ -29,6 +30,6 @@ class Seat extends Model
 
     public function getFloor()
     {
-        return DB::select("SELECT DISTINCT building, floor FROM T_SEAT");
+        return DB::select("SELECT DISTINCT building_name, floor FROM T_SEAT");
     }
 }
