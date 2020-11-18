@@ -17,16 +17,6 @@ class EmployeeController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param Request $request
@@ -51,32 +41,20 @@ class EmployeeController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
      * @param Request $request
-     * @param  int  $id
-     * @return Response
+     * @return JsonResponse
      */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
     public function showName(Request $request)
     {
         return response()->json([
             'result' => $this->employee->name()
+        ], 200);
+    }
+
+    public function getByName(Request $request)
+    {
+        return response()->json([
+            'result' => $this->employee->byName($request->query('name'))
         ], 200);
     }
 }
