@@ -31,7 +31,7 @@ class Employee extends Model
         return $this->belongsTo(Group::class, 'group_initial', 'group_initial');
     }
 
-    public function scopeData($query, $employee)
+    public function scopeData($query)
     {
         return $query->with([
             'seat',
