@@ -14,8 +14,8 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/employee/name', 'EmployeeController@showName');
-Route::get('/employee/coordinate', 'EmployeeController@getEmployeeCoordinate');
+Route::get('/employee/{employee}/coordinate', 'EmployeeController@getEmployeeCoordinate');
 Route::get('/building/{building}/floor/{floor}/employee', 'EmployeeController@getEmployeeByFloorBuilding');
-Route::get('/employee/{employee}', 'EmployeeController@show');
+Route::get('/employee/id/{employee}', 'EmployeeController@show');
 Route::get('/employee', 'EmployeeController@getByName');
 Route::get('/floor', 'SeatController@getFloor');
