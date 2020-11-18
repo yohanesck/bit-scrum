@@ -33,6 +33,6 @@ class Employee extends Model
 
     public function scopeData($query)
     {
-        return $query->with('seat');
+        return $query->with('seat', 'group');
     }
 }
