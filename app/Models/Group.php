@@ -13,7 +13,7 @@ class Group extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'biro_id',
+        'BIRO_ID',
         'group_initial',
         'division_name',
         'biro_name'
@@ -21,6 +21,6 @@ class Group extends Model
 
     public function employee()
     {
-        return $this->hasMany(Employee::class, 'biro_id', 'biro_id');
+        return $this->hasMany(Employee::class, 'BIRO_ID', 'BIRO_ID');
     }
 }

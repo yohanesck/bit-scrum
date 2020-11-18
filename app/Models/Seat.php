@@ -16,13 +16,13 @@ class Seat extends Model
 
     protected $fillable = [
         'seat_id',
-        'nip',
+        'NIP',
         'building',
         'floor'
     ];
 
     public function employee()
     {
-        return $this->hasMany(Employee::class, 'nip', 'nip');
+        return $this->hasMany(Employee::class, 'NIP', 'NIP');
     }
 }
