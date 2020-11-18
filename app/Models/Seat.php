@@ -21,7 +21,7 @@ class Seat extends Model
         'floor'
     ];
 
-    public function employees()
+    public function employee()
     {
         return $this->hasMany(Employee::class, 'NIP', 'NIP');
     }

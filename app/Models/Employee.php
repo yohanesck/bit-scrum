@@ -17,7 +17,7 @@ class Employee extends Model
     protected $fillable = [
         'NIP',
         'full_name',
-        'group_initial',
+        'biro_id',
         'url_picture'
     ];
 
@@ -28,7 +28,7 @@ class Employee extends Model
 
     public function group()
     {
-        return $this->belongsTo(Group::class, 'group_initial', 'group_initial');
+        return $this->belongsTo(Group::class, 'biro_id', 'biro_id');
     }
 
     public function scopeData($query)

@@ -8,13 +8,12 @@ class Group extends Model
 {
     protected $table = "M_GROUP";
 
-    protected $primaryKey = "group_initial";
-
-    public $incrementing = false;
+    protected $primaryKey = "biro_id";
 
     public $timestamps = false;
 
     protected $fillable = [
+        'biro_id',
         'group_initial',
         'division_name',
         'biro_name'
@@ -22,6 +21,6 @@ class Group extends Model
 
     public function employee()
     {
-        return $this->hasMany(Employee::class, 'group_initial', 'group_initial');
+        return $this->hasMany(Employee::class, 'biro_id', 'biro_id');
     }
 }
