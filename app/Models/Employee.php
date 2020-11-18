@@ -50,9 +50,9 @@ class Employee extends Model
     public function getCoordinate($nip)
     {
         return DB::select("
-            SELECT SEAT_ID
+            SELECT *
             FROM S_EMPLOYEE
-            JOIN T_SEAT
+            INNER JOIN T_SEAT
             ON S_EMPLOYEE.NIP = T_SEAT.NIP"
         );
     }
