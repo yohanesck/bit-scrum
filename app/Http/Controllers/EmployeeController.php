@@ -53,6 +53,7 @@ class EmployeeController extends Controller
 
     public function getByName(Request $request)
     {
+        dd($request);
         return response()->json([
             'result' => $this->employee->byName($request->query('name'))
         ], 200);
