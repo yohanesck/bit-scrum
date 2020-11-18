@@ -43,7 +43,7 @@ class EmployeeController extends Controller
      */
     public function show(Employee $employee)
     {
-        dd($employee->fillable('NIP'));
+        dd($employee->getForeignKey());
         return response()->json([
             'result' => $this->employee->data()->find($employee->NIP)
         ], 200);
