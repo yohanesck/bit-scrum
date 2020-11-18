@@ -17,17 +17,6 @@ class EmployeeController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param Request $request
-     * @return Response
-     */
-    public function store(Request $request)
-    {
-        $request->query('name');
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param Employee $employee
@@ -68,5 +57,16 @@ class EmployeeController extends Controller
                 'result' => $result
             ], 200);
         }
+    }
+
+    /**
+     * @param Employee $employee
+     * @return JsonResponse
+     */
+    public function getEmployeeCoordinate(Employee $employee)
+    {
+        return response()->json([
+            'result' => $employee->getCoordinate($employee->NIP)
+        ], 200);
     }
 }

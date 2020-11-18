@@ -46,4 +46,15 @@ class Employee extends Model
     {
         return DB::select("SELECT FULL_NAME FROM S_EMPLOYEE WHERE UPPER(FULL_NAME) LIKE UPPER('%" . $name. "%')");
     }
+
+    public function getCoordinate($nip)
+    {
+        return DB::select("
+            SELECT SEAT_ID
+            FROM S_EMPLOYEE
+            JOIN T_SEAT
+            ON S_EMPLOYEE.NIP = T_SEAT.NIP
+            WHERE NIP=$nip"
+        );
+    }
 }
