@@ -53,8 +53,7 @@ class Employee extends Model
             SELECT SEAT_ID
             FROM S_EMPLOYEE
             JOIN T_SEAT
-            ON S_EMPLOYEE.NIP = T_SEAT.NIP
-            WHERE S_EMPLOYEE.NIP=$nip"
+            ON S_EMPLOYEE.NIP = T_SEAT.NIP"
         );
     }
 }
