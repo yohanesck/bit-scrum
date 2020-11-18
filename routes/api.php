@@ -19,5 +19,5 @@ Route::get('/employee/name', 'EmployeeController@showName');
 Route::get('/employee/{employee}/coordinate', 'EmployeeController@getEmployeeCoordinate');
 Route::get('/employee/{employee}', 'EmployeeController@show');
 Route::get('/employee', 'EmployeeController@getByName');
-Route::get('/floor', 'Seat@getFloor');
+Route::get('/floor', 'SeatController@getFloor');
 Route::get('/{building}/{floor}/employee', 'EmployeeController@getEmployeeByFloorBuilding');
