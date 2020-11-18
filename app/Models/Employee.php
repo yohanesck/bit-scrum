@@ -52,8 +52,7 @@ class Employee extends Model
         return DB::select("
             SELECT *
             FROM S_EMPLOYEE
-            INNER JOIN T_SEAT
-            ON S_EMPLOYEE.NIP = T_SEAT.NIP"
+            "
         );
     }
 }
