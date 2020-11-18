@@ -32,7 +32,7 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->query('name');
     }
 
     /**
@@ -44,7 +44,7 @@ class EmployeeController extends Controller
     public function show(Employee $employee)
     {
         return response()->json([
-            'result' => $employee->data()->get()
+            'result' => $employee->data()->find($employee->NIP)
         ], 200);
     }
 
