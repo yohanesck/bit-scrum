@@ -64,7 +64,7 @@ class Employee extends Model
             FROM S_EMPLOYEE
             JOIN T_SEAT
             ON S_EMPLOYEE.NIP = T_SEAT.NIP
-            WHERE FLOOR = $floor AND UPPER(BUILDING) = UPPER($building)"
+            WHERE FLOOR = $floor AND UPPER(BUILDING_NAME) = UPPER($building)"
         );
     }
 }
