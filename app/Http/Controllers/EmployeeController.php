@@ -59,7 +59,7 @@ class EmployeeController extends Controller
     {
         $result = $this->employee->byName($request->query('name'));
 
-        if (emptyArray($result)) {
+        if (empty($result)) {
             return response()->json([
                'result' => 'No Data Found'
             ], 404);
