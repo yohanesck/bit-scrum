@@ -15,7 +15,7 @@ class Employee extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'NIP',
+        'nip',
         'full_name',
         'biro_id',
         'url_picture'
@@ -23,7 +23,7 @@ class Employee extends Model
 
     public function seat()
     {
-        return $this->belongsTo(Seat::class, 'NIP', 'NIP');
+        return $this->belongsTo(Seat::class, 'nip', 'nip');
     }
 
     public function group()

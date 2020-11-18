@@ -44,7 +44,7 @@ class EmployeeController extends Controller
     public function show(Employee $employee)
     {
         return response()->json([
-            'result' => $employee->data()
+            'result' => $employee
         ], 200);
     }
 
