@@ -43,7 +43,7 @@ class EmployeeController extends Controller
      */
     public function show(Employee $employee)
     {
-        dd($employee->NIP);
+        dd($employee);
         return response()->json([
             'result' => $this->employee->data()->find($employee->NIP)
         ], 200);
