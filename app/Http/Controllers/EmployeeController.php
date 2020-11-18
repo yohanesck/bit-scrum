@@ -51,6 +51,10 @@ class EmployeeController extends Controller
         ], 200);
     }
 
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
     public function getByName(Request $request)
     {
         dd($request);
