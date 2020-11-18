@@ -42,7 +42,7 @@ class Employee extends Model
         return DB::select('select FULL_NAME from S_EMPLOYEE');
     }
 
-    public function scopeByName($name)
+    public function scopeByName($query, $name)
     {
         return DB::select("SELECT FULL_NAME FROM S_EMPLOYEE WHERE UPPER(FULL_NAME) LIKE UPPER('%" . $name. "%')");
     }
