@@ -17,4 +17,4 @@ Route::get('/', 'UserController@index');
 
 Route::get('/employee/name', 'EmployeeController@showName');
 Route::get('/employee/{employee}', 'EmployeeController@show');
-Route::get('/employee?name=', 'EmployeeController@getByName');
+Route::get('/employee', 'EmployeeController@getByName');
