@@ -50,9 +50,21 @@ class Employee extends Model
     public function getCoordinate($nip)
     {
         return DB::select("
-            SELECT *
+            SELECT SEAT_ID
             FROM S_EMPLOYEE
-            "
+            JOIN T_SEAT
+            ON S_EMPLOYEE.NIP = T_SEAT.NIP
+            WHERE NIP=$nip"
+        );
+    }
+
+    public function getEmployeeByFloor($request)
+    {
+        return DB::select("SELECT FULL_NAME
+            FROM S_EMPLOYEE
+            JOIN T_SEAT
+            ON S_EMPLOYEE.NIP = T_SEAT.NIP
+            WHERE FLOOR = $floor AND UPPER(BUILDING) = UPPER($building)"
         );
     }
 }

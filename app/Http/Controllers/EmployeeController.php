@@ -69,4 +69,16 @@ class EmployeeController extends Controller
             'result' => $employee->getCoordinate($employee->NIP)
         ], 200);
     }
+
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function getEmployeeByFloorBuilding(Request $request)
+    {
+        dd($request);
+        return response()->json([
+            'result' => $this->employee->getEmployeeByFloor($request)
+        ], 200);
+    }
 }

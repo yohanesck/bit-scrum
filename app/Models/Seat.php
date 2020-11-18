@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Seat extends Model
 {
@@ -24,5 +25,10 @@ class Seat extends Model
     public function employee()
     {
         return $this->hasMany(Employee::class, 'NIP', 'NIP');
+    }
+
+    public function getFloor()
+    {
+        return DB::select("SELECT DISTINCT BUILDING, FLOOR FROM T_SEAT");
     }
 }
