@@ -57,9 +57,8 @@ class EmployeeController extends Controller
      */
     public function getByName(Request $request)
     {
-        dd($request->toArray()['name']);
         return response()->json([
-            'result' => $this->employee->byName($request->toArray())
+            'result' => $this->employee->byName($request->toArray()['name'])
         ], 200);
     }
 }
