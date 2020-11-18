@@ -18,6 +18,7 @@ class Employee extends Model
     protected $fillable = [
         'NIP',
         'full_name',
+        'initial_name',
         'BIRO_ID',
         'url_picture'
     ];
@@ -44,7 +45,10 @@ class Employee extends Model
 
     public function scopeByName($query, $name)
     {
-        return DB::select("SELECT NIP, FULL_NAME FROM S_EMPLOYEE WHERE UPPER(FULL_NAME) LIKE UPPER('%" . $name. "%')");
+        return DB::select("SELECT NIP, FULL_NAME FROM S_EMPLOYEE
+            WHERE UPPER(FULL_NAME) LIKE UPPER('%" . $name . "%')
+            OR UPPER(INITIAL_NAME) LIKE UPPER('%" . $name . "%')"
+        );
     }
 
     public function getCoordinate($nip)
