@@ -36,8 +36,6 @@ class Employee extends Model
         return $query->with([
             'seat',
             'group'
-        ])->where([
-            'NIP' => $employee->NIP
         ]);
     }
 }
