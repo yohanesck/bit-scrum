@@ -16,5 +16,5 @@ use Illuminate\Http\Request;
 Route::get('/', 'UserController@index');
 
 Route::get('/employee/{employee}', 'EmployeeController@show');
-Route::get('/employee', 'EmployeeController@showName');
+Route::get('/employee/name', 'EmployeeController@showName');
 Route::get('/employee?name=', 'EmployeeController@getByName');
