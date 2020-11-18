@@ -8,7 +8,7 @@ class Employee extends Model
 {
     protected $table = "S_EMPLOYEE";
 
-    protected $primaryKey = "NIP";
+    protected $primaryKey = "nip";
 
     public $incrementing = false;
 
