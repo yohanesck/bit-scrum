@@ -39,12 +39,12 @@ class Employee extends Model
 
     public function scopeName()
     {
-        return DB::select('select FULL_NAME from S_EMPLOYEE');
+        return DB::select('select NIP, FULL_NAME from S_EMPLOYEE');
     }
 
     public function scopeByName($query, $name)
     {
-        return DB::select("SELECT FULL_NAME FROM S_EMPLOYEE WHERE UPPER(FULL_NAME) LIKE UPPER('%" . $name. "%')");
+        return DB::select("SELECT NIP, FULL_NAME FROM S_EMPLOYEE WHERE UPPER(FULL_NAME) LIKE UPPER('%" . $name. "%')");
     }
 
     public function getCoordinate($nip)
@@ -60,7 +60,7 @@ class Employee extends Model
 
     public function getEmployeeByFloor($building, $floor)
     {
-        return DB::select("SELECT FULL_NAME
+        return DB::select("SELECT NIP, FULL_NAME
             FROM S_EMPLOYEE
             JOIN T_SEAT
             ON S_EMPLOYEE.NIP = T_SEAT.NIP
