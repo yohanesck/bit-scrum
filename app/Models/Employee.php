@@ -31,11 +31,13 @@ class Employee extends Model
         return $this->belongsTo(Group::class, 'group_initial', 'group_initial');
     }
 
-    public function scopeData($query)
+    public function scopeData($query, $employee)
     {
         return $query->with([
             'seat',
             'group'
+        ])->where([
+            'NIP' => $employee->NIP
         ]);
     }
 }
