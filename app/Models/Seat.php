@@ -45,13 +45,8 @@ class Seat extends Model
         return $query->where('building_name', $building);
     }
 
-    public function getDataByBuildingFloor($building, $floor)
+    public function scopeFloor($query, $floor)
     {
-        return DB::select("
-            SELECT * FROM T_SEAT LEFT JOIN S_EMPLOYEE
-            ON T_SEAT.NIP = S_EMPLOYEE.NIP
-            WHERE T_SEAT.BUILDING_NAME LIKE '$building'
-            AND T_SEAT.FLOOR = '$floor'
-        ");
+        return $query->where('floor', $floor);
     }
 }
