@@ -30,7 +30,7 @@ class SeatController extends Controller
 //            'result' => $this->seat->where('building_name', "'$building'")->get()
 //        ], 200);
         return response()->json([
-            'result' => DB::select("SELECT * FROM T_SEAT WHERE BUILDING_NAME = ". $building)
+            'result' => DB::select("SELECT * FROM T_SEAT WHERE BUILDING_NAME = '$building'")
         ], 200);
 //        return response()->json([
 //            'result' => $this->seat->getDataByBuildingFloor($building, $floor)
