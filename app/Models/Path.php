@@ -11,8 +11,19 @@ class Path extends Model
     private $INT_MAX = 0x7FFFFFFF;
     private $map = array();
 
+    public function setArrayZero()
+    {
+        for ($i = 0; $i < 10; $i++) {
+            for ($j = 0; $j < 10; $j++) {
+                $this->map[$i][$j] = 0;
+            }
+        }
+    }
+
     public function initializeGraph()
     {
+        $this->setArrayZero();
+        
         for ($i = 0; $i < 10; $i++) {
             for ($j = 0; $j < 10; $j++) {
                 if (abs($i - $j) == 1) {
