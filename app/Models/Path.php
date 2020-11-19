@@ -78,6 +78,6 @@ class Path extends Model
                     $distance[$v] = $distance[$u] + $graph[$u][$v];
         }
 
-        $this->PrintResult($distance, $verticesCount);
+        return $this->PrintResult($distance, $verticesCount);
     }
 }
