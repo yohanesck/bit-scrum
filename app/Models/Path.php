@@ -11,6 +11,11 @@ class Path extends Model
     private $INT_MAX = 0x7FFFFFFF;
     private $map = array();
 
+    public function initializeGraph()
+    {
+        //
+    }
+
     public function input($row, $column, $value)
     {
         $this->map[$row][$column] = $value;
@@ -20,24 +25,6 @@ class Path extends Model
     public function getMap()
     {
         return $this->map;
-    }
-
-    public function generatePath()
-    {
-        $point1 = new Point(1, 1);
-        $point2 = new Point(2, 2);
-        $point3 = new Point(3, 3);
-
-        $allPoints = [$point1, $point2, $point3];
-
-        $point1->addPoint($point2);
-        $point1->addPoint($point3);
-        $point2->addPoint($point3);
-
-        $dijkstra = new Dijkstra($allPoints, $point1, $point3);
-        $result = $dijkstra->findShortestPath();
-        var_dump($result);
-        return $result;
     }
 
     public function MinimumDistance($distance, $shortestPathTreeSet, $verticesCount)
