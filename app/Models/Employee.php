@@ -35,7 +35,7 @@ class Employee extends Model
 
     public function scopeData($query)
     {
-        return $query->with('seat', 'group');
+        return $query->with('seat', 'group', 'group.seatColor');
     }
 
     public function scopeByName($query, $name)
