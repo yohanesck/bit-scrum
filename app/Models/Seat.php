@@ -32,4 +32,10 @@ class Seat extends Model
     {
         return DB::select("SELECT DISTINCT seat_id, seat_name, building_name, floor FROM T_SEAT");
     }
+
+    public function scopeDataSeatByFloor($query, $building, $floor)
+    {
+        return $query->with('employee')->where(['building_name', 'LIKE', $building],
+        ['floor', '=', $floor]);
+    }
 }

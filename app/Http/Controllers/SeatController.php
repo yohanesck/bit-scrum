@@ -21,4 +21,11 @@ class SeatController extends Controller
             'result' => $this->seat->getFloor()
         ], 200);
     }
+
+    public function getDataSeatByFloor($building, $floor)
+    {
+        return response()->json([
+            'result' => $this->seat->dataSeatByFloor($building, $floor)->get()
+        ], 200);
+    }
 }
