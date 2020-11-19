@@ -28,8 +28,6 @@ class PathController extends Controller
             array(0, 0, 2, 0, 0, 0, 6, 7, 0)
         );
 
-        dd($this->path->Dijkstra($graph, 0, 9));
-
         return response()->json([
             'result' => $this->path->Dijkstra($graph, 0, 9)
         ], 200);
