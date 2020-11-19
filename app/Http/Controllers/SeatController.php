@@ -27,7 +27,7 @@ class SeatController extends Controller
     {
 //        dd($this->seat->data()->where("T_SEAT.BUILDING_NAME", "'".$building."'")->get());
         return response()->json([
-            'result' => $this->seat->where('a', "'$building'")->get()
+            'result' => $this->seat->where('building_name', "'$building'")->get()
         ], 200);
 //        return response()->json([
 //            'result' => $this->seat->getDataByBuildingFloor($building, $floor)
