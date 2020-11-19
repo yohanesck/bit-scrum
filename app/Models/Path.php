@@ -8,6 +8,8 @@ use Bmichotte\Dijkstra\Point;
 
 class Path extends Model
 {
+    private $INT_MAX = 0x7FFFFFFF;
+
     public function generatePath()
     {
         $point1 = new Point(1, 1);
@@ -28,9 +30,7 @@ class Path extends Model
 
     public function MinimumDistance($distance, $shortestPathTreeSet, $verticesCount)
     {
-        global $INT_MAX;
-        $INT_MAX = 0x7FFFFFFF;
-        $min = $INT_MAX;
+        $min = $this->INT_MAX;
         $minIndex = 0;
 
         for ($v = 0; $v < $verticesCount; ++$v)
@@ -47,10 +47,10 @@ class Path extends Model
 
     public function PrintResult($distance, $verticesCount)
     {
-        $output = "";
+        $output = array();
 
         for ($i = 0; $i < $verticesCount; ++$i)
-            $output .= $i . " - " . $distance[$i] . "\n";
+            $output[$i] = $i . " - " . $distance[$i] . "\n";
 
         dd($output);
         return $output;
@@ -58,13 +58,12 @@ class Path extends Model
 
     public function Dijkstra($graph, $source, $verticesCount)
     {
-        global $INT_MAX;
         $distance = array();
         $shortestPathTreeSet = array();
 
         for ($i = 0; $i < $verticesCount; ++$i)
         {
-            $distance[$i] = $INT_MAX;
+            $distance[$i] = $this->INT_MAX;
             $shortestPathTreeSet[$i] = false;
         }
 
@@ -76,7 +75,7 @@ class Path extends Model
             $shortestPathTreeSet[$u] = true;
 
             for ($v = 0; $v < $verticesCount; ++$v)
-                if (!$shortestPathTreeSet[$v] && $graph[$u][$v] && $distance[$u] != $INT_MAX && $distance[$u] + $graph[$u][$v] < $distance[$v])
+                if (!$shortestPathTreeSet[$v] && $graph[$u][$v] && $distance[$u] != $this->INT_MAX && $distance[$u] + $graph[$u][$v] < $distance[$v])
                     $distance[$v] = $distance[$u] + $graph[$u][$v];
         }
 
