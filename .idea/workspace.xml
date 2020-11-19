@@ -5,6 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PathController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PathController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Path.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Path.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,7 +145,7 @@
       <option name="presentableId" value="Default" />
       <updated>1605683596642</updated>
       <workItem from="1605683598640" duration="29173000" />
-      <workItem from="1605749703370" duration="28163000" />
+      <workItem from="1605749703370" duration="31296000" />
     </task>
     <servers />
   </component>
@@ -168,9 +169,9 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1605776903154" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1605772346354">
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1605794116462">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1605772346354" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1605794116462" />
   </component>
 </project>

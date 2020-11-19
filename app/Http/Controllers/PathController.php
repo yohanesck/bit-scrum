@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Path;
+use Exception;
 use Illuminate\Http\Request;
 
 class PathController extends Controller
@@ -14,13 +15,13 @@ class PathController extends Controller
         $this->path = $path;
     }
 
-    public function getShortestPath()
+    public function getShortestPath($building, $floor, $from, $to)
     {
-        $graph = $this->path->initializeGraph();
+        if (strtolower($building) == 'mbca' && strtolower($floor) == '15')
+            return response()->json([
+                'result' => $this->path->shortestPath($this->path->generateArrayMBCA15(), $from, $to)
+            ], 200);
 
-        return response()->json([
-            'result' => $this->path->Dijkstra($graph, 0, 6),
-            'input_array' => $this->path->getMap()
-        ], 200);
+        throw new Exception('Service Unavailable', 503);
     }
 }

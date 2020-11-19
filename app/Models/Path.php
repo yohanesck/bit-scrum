@@ -9,33 +9,7 @@ use Bmichotte\Dijkstra\Point;
 class Path extends Model
 {
     private $INT_MAX = 0x7FFFFFFF;
-    private $map = array();
-
-    public function setArrayZero()
-    {
-        for ($i = 0; $i < 11; $i++) {
-            for ($j = 0; $j < 11; $j++) {
-                $this->map[$i][$j] = 0;
-            }
-        }
-    }
-
-    public function initializeGraph()
-    {
-        $this->setArrayZero();
-
-        for ($i = 0; $i < 11; $i++) {
-            for ($j = 0; $j < 11; $j++) {
-                if (abs($i - $j) == 1) {
-                    $this->input($i, $j, 1);
-                } else {
-                    $this->input($i, $j, 0);
-                }
-            }
-        }
-
-        return $this->getMap();
-    }
+    private $_distArr = array();
 
     public function input($row, $column, $value)
     {
@@ -48,57 +22,95 @@ class Path extends Model
         return $this->map;
     }
 
-    public function MinimumDistance($distance, $shortestPathTreeSet, $verticesCount)
+    public function generateArrayMBCA15()
     {
-        $min = $this->INT_MAX;
-        $minIndex = 0;
+        $_distArr[1][2] = 1;
+        $_distArr[2][3] = 1;
+        $_distArr[3][4] = 1;
+        $_distArr[4][5] = 1;
+        $_distArr[5][6] = 1;
+        $_distArr[6][7] = 1;
+        $_distArr[7][8] = 1;
+        $_distArr[8][9] = 1;
+        $_distArr[8][10] = 1;
+        $_distArr[10][11] = 1;
+        $_distArr[11][12] = 1;
+        $_distArr[12][13] = 1;
+        $_distArr[13][14] = 1;
+        $_distArr[14][15] = 1;
+        $_distArr[15][16] = 1;
+        $_distArr[16][17] = 1;
+        $_distArr[17][18] = 1;
+        $_distArr[18][19] = 1;
+        $_distArr[19][20] = 1;
+        $_distArr[20][26] = 1;
+        $_distArr[26][25] = 1;
+        $_distArr[25][24] = 1;
+        $_distArr[24][23] = 1;
+        $_distArr[23][21] = 1;
+        $_distArr[21][1] = 1;
+        $_distArr[1][22] = 1;
 
-        for ($v = 0; $v < $verticesCount; ++$v)
-        {
-            if ($shortestPathTreeSet[$v] == false && $distance[$v] <= $min)
-            {
-                $min = $distance[$v];
-                $minIndex = $v;
+        //Mirror
+        $_distArr[2][1] = 1;
+        $_distArr[3][2] = 1;
+        $_distArr[4][3] = 1;
+        $_distArr[5][4] = 1;
+        $_distArr[6][5] = 1;
+        $_distArr[7][6] = 1;
+        $_distArr[8][7] = 1;
+        $_distArr[9][8] = 1;
+        $_distArr[10][8] = 1;
+        $_distArr[11][10] = 1;
+        $_distArr[12][11] = 1;
+        $_distArr[13][12] = 1;
+        $_distArr[14][13] = 1;
+        $_distArr[15][14] = 1;
+        $_distArr[16][15] = 1;
+        $_distArr[17][16] = 1;
+        $_distArr[18][17] = 1;
+        $_distArr[19][18] = 1;
+        $_distArr[20][19] = 1;
+        $_distArr[26][20] = 1;
+        $_distArr[25][26] = 1;
+        $_distArr[24][25] = 1;
+        $_distArr[23][24] = 1;
+        $_distArr[21][23] = 1;
+        $_distArr[1][21] = 1;
+        $_distArr[22][1] = 1;
+
+        return $_distArr;
+    }
+
+    public function shortestPath($_distArr, $a, $b)
+    {
+        //initialize the array for storing
+        $S = array();//the nearest path with its parent and weight
+        $Q = array();//the left nodes without the nearest path
+        foreach(array_keys($_distArr) as $val) $Q[$val] = 99999;
+        $Q[$a] = 0;
+
+        //start calculating
+        while(!empty($Q)){
+            $min = array_search(min($Q), $Q);//the most min weight
+            if($min == $b) break;
+            foreach($_distArr[$min] as $key=>$val) if(!empty($Q[$key]) && $Q[$min] + $val < $Q[$key]) {
+                $Q[$key] = $Q[$min] + $val;
+                $S[$key] = array($min, $Q[$key]);
             }
+            unset($Q[$min]);
         }
 
-        return $minIndex;
-    }
-
-    public function PrintResult($distance, $verticesCount)
-    {
-        $output = array();
-
-        for ($i = 0; $i < $verticesCount; ++$i)
-            $output[$i] = $i . " - " . $distance[$i];
-
-        return $output;
-    }
-
-    public function Dijkstra($graph, $source, $verticesCount)
-    {
-        $distance = array();
-        $shortestPathTreeSet = array();
-
-        for ($i = 0; $i < $verticesCount; ++$i)
-        {
-            $distance[$i] = $this->INT_MAX;
-            $shortestPathTreeSet[$i] = false;
+        //list the path
+        $path = array();
+        $pos = $b;
+        while($pos != $a){
+            $path[] = $pos;
+            $pos = $S[$pos][0];
         }
+        $path[] = $a;
+        $path = array_reverse($path);
 
-        $distance[$source] = 0;
-
-        for ($count = 0; $count < $verticesCount - 1; ++$count)
-        {
-            $u = $this->MinimumDistance($distance, $shortestPathTreeSet, $verticesCount);
-            $shortestPathTreeSet[$u] = true;
-
-            for ($v = 0; $v < $verticesCount; ++$v)
-                if (!$shortestPathTreeSet[$v] && $graph[$u][$v] && $distance[$u] != $this->INT_MAX && $distance[$u] + $graph[$u][$v] < $distance[$v]) {
-                    $distance[$v] = $distance[$u] + $graph[$u][$v];
-                }
-        }
-
-        return $this->PrintResult($distance, $verticesCount);
+        return $path;
     }
 }
