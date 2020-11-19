@@ -13,7 +13,15 @@ class Path extends Model
 
     public function initializeGraph()
     {
-        //
+        for ($i = 0; $i < 10; $i++) {
+            for ($j = 0; $j < 10; $j++) {
+                if (abs($i - $j) == 1) {
+                    $this->input($i, $j, 1);
+                } else {
+                    $this->input($i, $j, 0);
+                }
+            }
+        }
     }
 
     public function input($row, $column, $value)
