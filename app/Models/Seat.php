@@ -38,9 +38,9 @@ class Seat extends Model
         return $query->with('employee');
     }
 
-    public function scoopeByBuilding()
+    public function scoopeByBuilding($query, $building)
     {
-        
+        return $query->where('T_SEAT.FLOOR', 'LIKE', "'$building'");
     }
 
     public function getDataByBuildingFloor($building, $floor)
