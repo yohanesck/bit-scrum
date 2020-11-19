@@ -6,6 +6,7 @@ use App\Models\Employee;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 
 class EmployeeController extends Controller
 {
@@ -25,8 +26,11 @@ class EmployeeController extends Controller
     public function show(Employee $employee)
     {
         return response()->json([
-            'result' => $this->employee->data()->find($employee->NIP)
+            DB::select("SELECT * FROM M_GROUP;")
         ], 200);
+//        return response()->json([
+//            'result' => $this->employee->data()->find($employee->NIP)
+//        ], 200);
     }
 
     /**
