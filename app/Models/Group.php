@@ -10,13 +10,16 @@ class Group extends Model
 
     protected $primaryKey = "BIRO_ID";
 
+    public $incrementing = false;
+
     public $timestamps = false;
 
     protected $fillable = [
         'BIRO_ID',
         'GROUP_INITIAL',
-        'division_name',
-        'biro_name'
+        'DIVISION_NAME',
+        'BIRO_NAME',
+        'BIRO_INITIAL'
     ];
 
     public function employee()

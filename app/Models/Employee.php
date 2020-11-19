@@ -58,6 +58,11 @@ class Employee extends Model
         );
     }
 
+    /**
+     * @param $building
+     * @param $floor
+     * @return array
+     */
     public function getEmployeeByFloor($building, $floor)
     {
         return DB::select("SELECT S_EMPLOYEE.NIP, S_EMPLOYEE.FULL_NAME
