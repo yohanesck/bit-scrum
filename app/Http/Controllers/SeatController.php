@@ -25,6 +25,7 @@ class SeatController extends Controller
 
     public function getDataSeatByFloor($building, $floor)
     {
+        dd('T_SEAT.BUILDING_NAME LIKE ' . "'$building'");
         return response()->json([
             'result' => $this->seat->where('T_SEAT.BUILDING_NAME', "'$building'")->first()
         ], 200);
