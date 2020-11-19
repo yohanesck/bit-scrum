@@ -8,7 +8,7 @@ class Group extends Model
 {
     protected $table = "M_GROUP";
 
-    protected $primaryKey = "biro_id";
+    protected $primaryKey = "BIRO_ID";
 
     public $timestamps = false;
 
