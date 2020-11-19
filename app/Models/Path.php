@@ -22,6 +22,7 @@ class Path extends Model
 
         $dijkstra = new Dijkstra($allPoints, $point1, $point3);
         $result = $dijkstra->findShortestPath();
+        var_dump($result);
         return $result;
     }
 }

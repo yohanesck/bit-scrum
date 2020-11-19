@@ -36,7 +36,7 @@ class SeatController extends Controller
         $path = new Path();
 
         return response()->json([
-            'result' => ['a', 'b']
+            'result' => $path->generatePath()
         ], 200);
     }
 }
