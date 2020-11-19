@@ -26,8 +26,11 @@ class SeatController extends Controller
     public function getDataSeatByFloor($building, $floor)
     {
 //        dd($this->seat->data()->where("T_SEAT.BUILDING_NAME", "'".$building."'")->get());
+//        return response()->json([
+//            'result' => $this->seat->where('building_name', "'$building'")->get()
+//        ], 200);
         return response()->json([
-            'result' => $this->seat->where('building_name', "'$building'")->get()
+            'result' => DB::select("SELECT * FROM T_SEAT WHERE BUILDING_NAME = ". $building)
         ], 200);
 //        return response()->json([
 //            'result' => $this->seat->getDataByBuildingFloor($building, $floor)
