@@ -35,7 +35,7 @@ class Seat extends Model
 
     public function getData()
     {
-        return $this->leftJoin('EMPLOYEE', 'EMPLOYEE.NIP', '=', 'T_SEAT.NIP');
+        return $this->leftJoin('S_EMPLOYEE', 'S_EMPLOYEE.NIP', '=', 'T_SEAT.NIP');
     }
 
     public function scopeBuilding($query, $building)
