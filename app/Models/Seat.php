@@ -36,8 +36,10 @@ class Seat extends Model
     public function scopeDataSeatByFloor($query, $building, $floor)
     {
         return $query->where(
-            ['building_name', 'LIKE', $building],
-            ['floor', '=', $floor]
+            [
+                'building_name' => $building,
+                'floor' => $floor
+            ]
         );
     }
 }
