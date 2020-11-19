@@ -40,6 +40,11 @@ class Seat extends Model
         return $query->with('employee');
     }
 
+    public function scopeBuilding($query, $building)
+    {
+        return $query->where('building_name', $building);
+    }
+
     public function getDataByBuildingFloor($building, $floor)
     {
         return DB::select("
