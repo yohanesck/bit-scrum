@@ -30,7 +30,7 @@ class Seat extends Model
 
     public function getFloor()
     {
-        return DB::select("SELECT DISTINCT seat_id, seat_name, building_name, floor FROM T_SEAT");
+        return DB::select("SELECT DISTINCT seat_id, seat_name, building_name, NIP, floor FROM T_SEAT");
     }
 
     public function scopeData($query)
