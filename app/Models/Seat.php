@@ -37,7 +37,7 @@ class Seat extends Model
 
     public function scopeData($query)
     {
-        return $query->with('employee');
+        return $query->with('employee', 'employee.group', 'employee.group.seatColor');
     }
 
     public function scopeBuilding($query, $building)
