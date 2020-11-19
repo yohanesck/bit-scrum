@@ -105,7 +105,7 @@ class Path extends Model
         $path = array();
         $pos = $b;
         while($pos != $a){
-            $path[] = $pos;
+            $path[] = "".$pos;
             $pos = $S[$pos][0];
         }
         $path[] = $a;
