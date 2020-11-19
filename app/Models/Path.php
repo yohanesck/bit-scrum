@@ -9,6 +9,18 @@ use Bmichotte\Dijkstra\Point;
 class Path extends Model
 {
     private $INT_MAX = 0x7FFFFFFF;
+    private $map = array();
+
+    public function input($row, $column, $value)
+    {
+        $this->map[$row][$column] = $value;
+        $this->map[$column][$row] = $value;
+    }
+
+    public function getMap()
+    {
+        return $this->map;
+    }
 
     public function generatePath()
     {
