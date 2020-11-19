@@ -26,11 +26,10 @@ class Path extends Model
         return $result;
     }
 
-    public $INT_MAX = 0x7FFFFFFF;
-
     public function MinimumDistance($distance, $shortestPathTreeSet, $verticesCount)
     {
         global $INT_MAX;
+        $INT_MAX = 0x7FFFFFFF;
         $min = $INT_MAX;
         $minIndex = 0;
 
@@ -48,10 +47,12 @@ class Path extends Model
 
     public function PrintResult($distance, $verticesCount)
     {
-        echo "<pre>" . "Vertex    Distance from source" . "</pre>";
+        $output = "";
 
         for ($i = 0; $i < $verticesCount; ++$i)
-            echo "<pre>" . $i . "\t  " . $distance[$i] . "</pre>";
+            $output .= $i . " - " . $distance[$i];
+
+        return $output;
     }
 
     public function Dijkstra($graph, $source, $verticesCount)
