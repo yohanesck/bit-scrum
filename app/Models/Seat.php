@@ -21,6 +21,7 @@ class Seat extends Model
         'NIP',
         'BUILDING_NAME',
         'FLOOR',
+        'NO_NODE',
         'COORD_X',
         'COORD_Y'
     ];
@@ -48,5 +49,10 @@ class Seat extends Model
     public function scopeFloor($query, $floor)
     {
         return $query->where('floor', $floor);
+    }
+
+    public function getCoordinateBySeatName($seatName)
+    {
+        return DB::select("SELECT COORD_X, COORD_Y FROM T_SEAT WHERE SEAT_NAME LIKE '$seatName'");
     }
 }

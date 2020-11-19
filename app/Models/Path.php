@@ -2,26 +2,71 @@
 
 namespace App\Models;
 
-use Bmichotte\Dijkstra\Dijkstra;
+use Exception;
 use Illuminate\Database\Eloquent\Model;
-use Bmichotte\Dijkstra\Point;
+use Illuminate\Support\Facades\DB;
+use PhpParser\Node\Stmt\DeclareDeclare;
 
 class Path extends Model
 {
-    private $INT_MAX = 0x7FFFFFFF;
-    private $_distArr = array();
-
-    public function input($row, $column, $value)
+    public function inputArray(&$arr, $row, $column, $value)
     {
-        $this->map[$row][$column] = $value;
-        $this->map[$column][$row] = $value;
+        $arr[$row][$column] = $value;
+        $arr[$column][$row] = $value;
     }
 
-    public function getMap()
+    public function handleRequest($building, $floor, $from, $to)
     {
-        return $this->map;
+        $tempStart = (array) $this->getNodes($from, $building, $floor)[0];
+        $tempEnd = (array) $this->getNodes($to, $building, $floor)[0];
+        $nodeStart = $tempStart['NO_NODE'];
+        $nodeEnd = $tempEnd['NO_NODE'];
+
+        if (strtolower($building) == 'mbca') {
+            if (strtolower($floor) == '15') {
+                $result = $this->shortestPath($this->generateArrayMBCA15(), $nodeStart, $nodeEnd);
+                return $this->getCoordinateXY($result, $building, $floor);
+            } else if (strtolower($floor) == '33') {
+                $result = $this->shortestPath($this->generateArrayMBCA33(), $nodeStart, $nodeEnd);
+                return $this->getCoordinateXY($result, $building, $floor);
+            }
+        } else if (strtolower($building) == 'wsa2') {
+            if (strtolower($floor) == '12b') {
+                $result = $this->shortestPath($this->generateArrayWSA12B(), $nodeStart, $nodeEnd);
+                return $this->getCoordinateXY($result, $building, $floor);
+            }
+        }
+
+        throw new Exception('Service Unavailable', 503);
     }
 
+    public function getNodes($param, $building, $floor)
+    {
+        $query = "SELECT NO_NODE FROM T_SEAT WHERE (BUILDING_NAME LIKE '$building' AND FLOOR = $floor) AND SEAT_NAME LIKE UPPER('$param')";
+        return DB::select($query);
+    }
+
+    public function getCoordinateXY($result, $building, $floor)
+    {
+        //Get coordinate from table Node by node_id
+        $query = "SELECT COORD_X, COORD_Y FROM M_NODE WHERE (BUILDING_NAME LIKE '$building' AND FLOOR = '$floor') AND (";
+
+        for ($i=0; $i<count($result); $i++) {
+            if ($i == 0) {
+                $query .= "NO_NODE = ". intval($result[$i]);
+            } else {
+                $query .= " OR NO_NODE = ". intval($result[$i]);
+            }
+        }
+
+        $query .= ")";
+
+        return DB::select($query);
+    }
+
+    /**
+     * @return mixed
+     */
     public function generateArrayMBCA15()
     {
         $_distArr[1][2] = 1;
@@ -44,12 +89,17 @@ class Path extends Model
         $_distArr[18][19] = 1;
         $_distArr[19][20] = 1;
         $_distArr[20][26] = 1;
+        $_distArr[26][27] = 1;
+        $_distArr[27][28] = 1;
+        $_distArr[28][29] = 1;
+        $_distArr[29][30] = 1;
+        $_distArr[30][23] = 1;
         $_distArr[26][25] = 1;
         $_distArr[25][24] = 1;
         $_distArr[24][23] = 1;
         $_distArr[23][21] = 1;
         $_distArr[21][1] = 1;
-        $_distArr[1][22] = 1;
+        $_distArr[23][22] = 1;
 
         //Mirror
         $_distArr[2][1] = 1;
@@ -72,16 +122,107 @@ class Path extends Model
         $_distArr[19][18] = 1;
         $_distArr[20][19] = 1;
         $_distArr[26][20] = 1;
+        $_distArr[27][26] = 1;
+        $_distArr[28][27] = 1;
+        $_distArr[29][28] = 1;
+        $_distArr[30][29] = 1;
+        $_distArr[23][30] = 1;
         $_distArr[25][26] = 1;
         $_distArr[24][25] = 1;
         $_distArr[23][24] = 1;
         $_distArr[21][23] = 1;
         $_distArr[1][21] = 1;
-        $_distArr[22][1] = 1;
+        $_distArr[22][23] = 1;
 
         return $_distArr;
     }
 
+    public function generateArrayMBCA33()
+    {
+        $arr = array();
+        $this->inputArray($arr, 1, 2, 1);
+        $this->inputArray($arr, 2, 3, 1);
+        $this->inputArray($arr, 3, 4, 1);
+        $this->inputArray($arr, 4, 5, 1);
+        $this->inputArray($arr, 5, 6, 1);
+        $this->inputArray($arr, 6, 7, 1);
+        $this->inputArray($arr, 7, 8, 1);
+        $this->inputArray($arr, 8, 9, 1);
+        $this->inputArray($arr, 9, 10, 1);
+        $this->inputArray($arr, 10, 11, 1);
+        $this->inputArray($arr, 11, 12, 1);
+        $this->inputArray($arr, 12, 13, 1);
+        $this->inputArray($arr, 13, 14, 1);
+        $this->inputArray($arr, 14, 15, 1);
+        $this->inputArray($arr, 15, 16, 1);
+        $this->inputArray($arr, 16, 17, 1);
+        $this->inputArray($arr, 17, 18, 1);
+        $this->inputArray($arr, 18, 19, 1);
+        $this->inputArray($arr, 19, 20, 1.5);
+        $this->inputArray($arr, 20, 2, 1);
+
+        return $arr;
+    }
+
+    public function generateArrayWSA12B()
+    {
+        $arr = array();
+
+        $this->inputArray($arr, 1, 2, 1);
+        $this->inputArray($arr, 2, 3, 1);
+        $this->inputArray($arr, 3, 4, 1);
+        $this->inputArray($arr, 4, 5, 1);
+        $this->inputArray($arr, 5, 6, 1);
+        $this->inputArray($arr, 6, 7, 1);
+        $this->inputArray($arr, 7, 8, 1);
+        $this->inputArray($arr, 7, 9, 1);
+        $this->inputArray($arr, 8, 9, 1.5);
+        $this->inputArray($arr, 9, 10, 1);
+        $this->inputArray($arr, 10, 11, 1);
+        $this->inputArray($arr, 11, 12, 1);
+        $this->inputArray($arr, 12, 13, 1);
+        $this->inputArray($arr, 13, 14, 1);
+        $this->inputArray($arr, 14, 15, 1);
+        $this->inputArray($arr, 15, 16, 1);
+        $this->inputArray($arr, 16, 17, 1);
+        $this->inputArray($arr, 17, 18, 1);
+        $this->inputArray($arr, 17, 19, 1);
+        $this->inputArray($arr, 19, 20, 1);
+        $this->inputArray($arr, 20, 21, 1);
+        $this->inputArray($arr, 21, 22, 1);
+        $this->inputArray($arr, 22, 2, 1);
+        $this->inputArray($arr, 10, 28, 1);
+        $this->inputArray($arr, 28, 27, 1);
+        $this->inputArray($arr, 27, 26, 1);
+        $this->inputArray($arr, 26, 24, 1);
+        $this->inputArray($arr, 15, 25, 1);
+        $this->inputArray($arr, 25, 24, 1);
+        $this->inputArray($arr, 24, 23, 1);
+        $this->inputArray($arr, 23, 4, 1);
+
+        return $arr;
+    }
+
+    public function coba()
+    {
+        $distArray[1][2] = 1;
+        $distArray[2][1] = 1;
+        $distArray[2][3] = 1;
+        $distArray[3][2] = 1;
+        $distArray[1][4] = 1;
+        $distArray[4][1] = 1;
+        $distArray[4][3] = 1;
+        $distArray[3][4] = 1;
+        $a = 1;
+        $b = 3;
+        return $this->shortestPath($distArray, $a, $b);
+    }
+    /**
+     * @param $_distArr
+     * @param $a
+     * @param $b
+     * @return array
+     */
     public function shortestPath($_distArr, $a, $b)
     {
         //initialize the array for storing
