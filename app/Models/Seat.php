@@ -9,18 +9,18 @@ class Seat extends Model
 {
     protected $table = "T_SEAT";
 
-    protected $primaryKey = "seat_id";
+    protected $primaryKey = "SEAT_ID";
 
     public $incrementing = false;
 
     public $timestamps = false;
 
     protected $fillable = [
-        'seat_id',
-        'seat_name',
+        'SEAT_ID',
+        'SEAT_NAME',
         'NIP',
-        'building_name',
-        'floor'
+        'BUILDING_NAME',
+        'FLOOR'
     ];
 
     public function employee()
@@ -31,6 +31,11 @@ class Seat extends Model
     public function getFloor()
     {
         return DB::select("SELECT DISTINCT seat_id, seat_name, building_name, NIP, floor FROM T_SEAT");
+    }
+
+    public function scopeData($query)
+    {
+        return $query->with('employee');
     }
 
     public function getDataByBuildingFloor($building, $floor)

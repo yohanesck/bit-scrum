@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Seat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use PHPUnit\Util\RegularExpressionTest;
 
 class SeatController extends Controller
 {
@@ -25,7 +26,10 @@ class SeatController extends Controller
     public function getDataSeatByFloor($building, $floor)
     {
         return response()->json([
-            'result' => $this->seat->getDataByBuildingFloor($building, $floor)
+            'result' => $this->seat->data()->get()
         ], 200);
+//        return response()->json([
+//            'result' => $this->seat->getDataByBuildingFloor($building, $floor)
+//        ], 200);
     }
 }
