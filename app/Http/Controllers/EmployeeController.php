@@ -26,11 +26,8 @@ class EmployeeController extends Controller
     public function show(Employee $employee)
     {
         return response()->json([
-            DB::select("SELECT * FROM M_GROUP;")
+            'result' => $this->employee->data()->find($employee->NIP)
         ], 200);
-//        return response()->json([
-//            'result' => $this->employee->data()->find($employee->NIP)
-//        ], 200);
     }
 
     /**
