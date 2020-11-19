@@ -35,16 +35,6 @@ class Seat extends Model
         return DB::select("SELECT DISTINCT seat_id, seat_name, building_name, NIP, floor FROM T_SEAT");
     }
 
-    public function scopeData($query)
-    {
-        return $query->with('employee');
-    }
-
-    public function scopeByBuilding($query, $building)
-    {
-        return $query->where('T_SEAT.BUILDING_NAME', "'$building'");
-    }
-
     public function getDataByBuildingFloor($building, $floor)
     {
         return DB::select("
