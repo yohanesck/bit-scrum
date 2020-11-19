@@ -40,10 +40,11 @@ class Employee extends Model
 
     public function scopeByName($query, $name)
     {
-        return DB::select("SELECT NIP, FULL_NAME FROM S_EMPLOYEE
-            WHERE UPPER(FULL_NAME) LIKE UPPER('%" . $name . "%')
-            OR UPPER(INITIAL_NAME) LIKE UPPER('%" . $name . "%')"
-        );
+        return $query->where('FULL_NAME', $name)->orWhere('INITIAL_NAME', $name);
+//        return DB::select("SELECT NIP, FULL_NAME FROM S_EMPLOYEE
+//            WHERE UPPER(FULL_NAME) LIKE UPPER('%" . $name . "%')
+//            OR UPPER(INITIAL_NAME) LIKE UPPER('%" . $name . "%')"
+//        );
     }
 
     public function getCoordinate($nip)

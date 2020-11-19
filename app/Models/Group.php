@@ -14,7 +14,7 @@ class Group extends Model
 
     protected $fillable = [
         'BIRO_ID',
-        'group_initial',
+        'GROUP_INITIAL',
         'division_name',
         'biro_name'
     ];
@@ -22,5 +22,10 @@ class Group extends Model
     public function employee()
     {
         return $this->hasMany(Employee::class, 'BIRO_ID', 'BIRO_ID');
+    }
+
+    public function seatColor()
+    {
+        return $this->hasMany(SeatColor::class, 'GROUP_INITIAL', 'GROUP_INITIAL');
     }
 }
