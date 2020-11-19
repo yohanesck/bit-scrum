@@ -16,7 +16,7 @@ Route::middleware(['cors'])->group(function () {
     Route::get('/employees', 'EmployeeController@index');
     Route::get('/building/{building}/floor/{floor}/employee', 'EmployeeController@getEmployeeByFloorBuilding');
     Route::get('/building/{building}/floor/{floor}/seat', 'SeatController@getDataSeatByFloor');
-    Route::get('/building/{building}/floor/{floor}/from/{from}/to/{to}', 'PathController@getShortestPath');
+    Route::get('/path/building/{building}/floor/{floor}/from/{from}/to/{to}', 'PathController@getShortestPath');
     Route::get('/employee/{employee}/coordinate', 'EmployeeController@getEmployeeCoordinate');
     Route::get('/employee/{employee}', 'EmployeeController@show');
     Route::get('/employee', 'EmployeeController@getByName');
