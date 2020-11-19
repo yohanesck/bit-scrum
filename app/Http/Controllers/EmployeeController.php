@@ -37,7 +37,7 @@ class EmployeeController extends Controller
     public function showName(Request $request)
     {
         return response()->json([
-            'result' => $this->employee->name()
+            'result' => $this->employee->data()->get()
         ], 200);
     }
 

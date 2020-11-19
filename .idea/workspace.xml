@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d0d57a2a-ac3f-4d53-be4e-e2bff9a2b881" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SeatController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SeatController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Seat.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Seat.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -141,7 +140,7 @@
       <option name="presentableId" value="Default" />
       <updated>1605683596642</updated>
       <workItem from="1605683598640" duration="29173000" />
-      <workItem from="1605749703370" duration="6195000" />
+      <workItem from="1605749703370" duration="6365000" />
     </task>
     <servers />
   </component>
@@ -157,9 +156,9 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1605711035096" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1605755218621">
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1605757428401">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1605755218621" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1605757428401" />
   </component>
 </project>
