@@ -29,8 +29,8 @@ class PathController extends Controller
         );
 
         $this->path->input(1, 1, 0);
-        $this->path->input(1, 2, 0);
-        $this->path->input(2, 2, 0);
+        $this->path->input(1, 2, 1);
+        $this->path->input(2, 2, 2);
 
         return response()->json([
             'result' => $this->path->Dijkstra($graph, 0, 9),
