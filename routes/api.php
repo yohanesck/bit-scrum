@@ -20,4 +20,5 @@ Route::middleware(['cors'])->group(function () {
     Route::get('/employee/{employee}', 'EmployeeController@show');
     Route::get('/employee', 'EmployeeController@getByName');
     Route::get('/floor', 'SeatController@getFloor');
+    Route::get('/path', 'SeatController@getShortestPath');
 });

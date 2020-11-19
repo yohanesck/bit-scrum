@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Path;
 use App\Models\Seat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -27,6 +28,14 @@ class SeatController extends Controller
     {
         return response()->json([
             'result' => $this->seat->data()->building($building)->floor($floor)->get()
+        ], 200);
+    }
+
+    public function getShortestPath()
+    {
+        $path = new Path();
+        return response()->json([
+            'result' => $path->generatePath()
         ], 200);
     }
 }

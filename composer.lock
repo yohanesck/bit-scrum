@@ -4,8 +4,58 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "94d4bf9ac7f4a933030e46a346ee2917",
+    "content-hash": "f41146a55638bb2af4362da385f98fbf",
     "packages": [
+        {
+            "name": "bmichotte/dijkstra",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bmichotte/dijkstra.git",
+                "reference": "f8626b4905a8c9f80d009dacd3a06699b7e14d1b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bmichotte/dijkstra/zipball/f8626b4905a8c9f80d009dacd3a06699b7e14d1b",
+                "reference": "f8626b4905a8c9f80d009dacd3a06699b7e14d1b",
+                "shasum": ""
+            },
+            "require": {
+                "ext-bcmath": "*",
+                "php": "^7.1"
+            },
+            "require-dev": {
+                "ext-gd": "*",
+                "phpunit/phpunit": "^7.5|^8.0",
+                "scrutinizer/ocular": "^1.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Bmichotte\\Dijkstra\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Benjamin Michotte",
+                    "email": "bmichotte@gmail.com"
+                }
+            ],
+            "description": "php 7+ implementation of the Dijkstra algorithm",
+            "homepage": "https://github.com/bmichotte/dijkstra",
+            "keywords": [
+                "dijkstra"
+            ],
+            "support": {
+                "issues": "https://github.com/bmichotte/dijkstra/issues",
+                "source": "https://github.com/bmichotte/dijkstra/tree/1.0.2"
+            },
+            "time": "2019-07-19T09:28:20+00:00"
+        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "v0.1.1",

@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d0d57a2a-ac3f-4d53-be4e-e2bff9a2b881" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Indoor-Positioning-Backend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Indoor-Positioning-Backend.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Employee.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Employee.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Group.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Group.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SeatController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SeatController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,7 +17,9 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution />
+    <execution>
+      <executable path="composer" />
+    </execution>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -113,6 +119,7 @@
       <path value="$PROJECT_DIR$/vendor/psr/simple-cache" />
       <path value="$PROJECT_DIR$/vendor/psr/container" />
       <path value="$PROJECT_DIR$/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/vendor/bmichotte/dijkstra" />
     </include_path>
   </component>
   <component name="ProjectId" id="1kSAPJrwS0Z40hamEbKZXTNY3IB" />
@@ -141,7 +148,7 @@
       <option name="presentableId" value="Default" />
       <updated>1605683596642</updated>
       <workItem from="1605683598640" duration="29173000" />
-      <workItem from="1605749703370" duration="16640000" />
+      <workItem from="1605749703370" duration="18763000" />
     </task>
     <servers />
   </component>
@@ -149,6 +156,10 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="459" y="200" key="#Composer" timestamp="1605771170682">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="459" y="200" key="#Composer/0.0.1366.728@0.0.1366.728" timestamp="1605771170682" />
     <state x="137" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605685662535">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -157,9 +168,9 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1605711035096" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1605766125022">
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1605772346354">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1605766125022" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1605772346354" />
   </component>
 </project>
