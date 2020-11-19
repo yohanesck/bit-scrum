@@ -23,7 +23,9 @@ class Path extends Model
     public function initializeGraph()
     {
         $this->setArrayZero();
-        
+
+        dd($this->map);
+
         for ($i = 0; $i < 10; $i++) {
             for ($j = 0; $j < 10; $j++) {
                 if (abs($i - $j) == 1) {
