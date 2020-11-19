@@ -42,7 +42,7 @@ class Seat extends Model
 
     public function scopeByBuilding($query, $building)
     {
-        return $query->where('T_SEAT.FLOOR', 'LIKE', "'$building'");
+        return $query->where('T_SEAT.BUILDING_NAME', 'LIKE', "'$building'");
     }
 
     public function getDataByBuildingFloor($building, $floor)
