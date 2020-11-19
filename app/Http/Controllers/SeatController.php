@@ -26,7 +26,7 @@ class SeatController extends Controller
     public function getDataSeatByFloor($building, $floor)
     {
         return response()->json([
-            'result' => $this->seat->data()->where('T_SEAT.BUILDING_NAME', "'$building'")
+            'result' => $this->seat->where('T_SEAT.BUILDING_NAME', "'$building'")
         ], 200);
 //        return response()->json([
 //            'result' => $this->seat->getDataByBuildingFloor($building, $floor)
