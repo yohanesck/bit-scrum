@@ -34,7 +34,7 @@ class SeatController extends Controller
     public function getShortestPath()
     {
         $path = new Path();
-        dd($path->generatePath());
+
         return response()->json([
             'result' => $path->generatePath()
         ], 200);
