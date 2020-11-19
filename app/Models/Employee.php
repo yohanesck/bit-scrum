@@ -19,7 +19,7 @@ class Employee extends Model
         'NIP',
         'full_name',
         'initial_name',
-        'biro_id',
+        'BIRO_ID',
         'url_picture'
     ];
 
@@ -30,7 +30,7 @@ class Employee extends Model
 
     public function group()
     {
-        return $this->belongsTo(Group::class, 'biro_id', 'biro_id');
+        return $this->belongsTo(Group::class, 'BIRO_ID', 'BIRO_ID');
     }
 
     public function scopeData($query)
