@@ -39,7 +39,7 @@ class Seat extends Model
             SELECT * FROM T_SEAT LEFT JOIN S_EMPLOYEE
             ON T_SEAT.NIP = S_EMPLOYEE.NIP
             WHERE T_SEAT.BUILDING_NAME LIKE '$building'
-            AND T_SEAT.FLOOR = $floor
+            AND T_SEAT.FLOOR = '$floor'
         ");
     }
 }
