@@ -40,8 +40,8 @@ class Employee extends Model
 
     public function scopeByName($query, $name)
     {
-        return $query->where('UPPER(full_name)', 'LIKE', "UPPER('%". $name ."%')")
-            ->orWhere('UPPER(initial_name)', 'LIKE', "UPPER('%". $name ."%')");
+        return $query->where("UPPER(full_name)", 'LIKE', "UPPER('%". $name ."%')")
+            ->orWhere("UPPER(initial_name)", 'LIKE', "UPPER('%". $name ."%')");
 //        return DB::select("SELECT NIP, FULL_NAME FROM S_EMPLOYEE
 //            WHERE UPPER(FULL_NAME) LIKE UPPER('%" . $name . "%')
 //            OR UPPER(INITIAL_NAME) LIKE UPPER('%" . $name . "%')"
