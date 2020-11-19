@@ -19,7 +19,7 @@ class Employee extends Model
         'NIP',
         'FULL_NAME',
         'INITIAL_NAME',
-        'AD_NAME'
+        'AD_NAME',
         'BIRO_ID',
         'url_picture'
     ];
