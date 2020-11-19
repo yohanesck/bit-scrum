@@ -12,10 +12,11 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-Route::get('/employee/name', 'EmployeeController@showName');
-Route::get('/building/{building}/floor/{floor}/employee', 'EmployeeController@getEmployeeByFloorBuilding');
-Route::get('/employee/{employee}/coordinate', 'EmployeeController@getEmployeeCoordinate');
-Route::get('/employee/{employee}', 'EmployeeController@show');
-Route::get('/employee', 'EmployeeController@getByName');
-Route::get('/floor', 'SeatController@getFloor');
+Route::middleware(['cors'])->group(function () {
+    Route::get('/employee/name', 'EmployeeController@showName');
+    Route::get('/building/{building}/floor/{floor}/employee', 'EmployeeController@getEmployeeByFloorBuilding');
+    Route::get('/employee/{employee}/coordinate', 'EmployeeController@getEmployeeCoordinate');
+    Route::get('/employee/{employee}', 'EmployeeController@show');
+    Route::get('/employee', 'EmployeeController@getByName');
+    Route::get('/floor', 'SeatController@getFloor');
+});
