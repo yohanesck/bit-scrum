@@ -20,7 +20,9 @@ class Seat extends Model
         'SEAT_NAME',
         'NIP',
         'BUILDING_NAME',
-        'FLOOR'
+        'FLOOR',
+        'COORD_X',
+        'COORD_Y'
     ];
 
     public function employee()
@@ -38,7 +40,7 @@ class Seat extends Model
         return $query->with('employee');
     }
 
-    public function scoopeByBuilding($query, $building)
+    public function scopeByBuilding($query, $building)
     {
         return $query->where('T_SEAT.FLOOR', 'LIKE', "'$building'");
     }
