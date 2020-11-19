@@ -50,7 +50,7 @@ class Path extends Model
         $output = "";
 
         for ($i = 0; $i < $verticesCount; ++$i)
-            $output .= $i . " - " . $distance[$i];
+            $output .= $i . " - " . $distance[$i] . '\n';
 
         dd($output);
         return $output;
