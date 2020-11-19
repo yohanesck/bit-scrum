@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 Route::middleware(['cors'])->group(function () {
-    Route::get('/employees', 'EmployeeController@showName');
+    Route::get('/employees', 'EmployeeController@index');
     Route::get('/building/{building}/floor/{floor}/employee', 'EmployeeController@getEmployeeByFloorBuilding');
     Route::get('/building/{building}/floor/{floor}/seat', 'SeatController@getDataSeatByFloor');
     Route::get('/employee/{employee}/coordinate', 'EmployeeController@getEmployeeCoordinate');
