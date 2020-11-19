@@ -19,7 +19,7 @@ class PathController extends Controller
         $graph = $this->path->initializeGraph();
 
         return response()->json([
-            'result' => $this->path->Dijkstra($graph, 0, 9),
+            'result' => $this->path->Dijkstra($graph, 0, 6),
             'input_array' => $this->path->getMap()
         ], 200);
     }

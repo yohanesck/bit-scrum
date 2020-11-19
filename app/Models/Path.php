@@ -13,8 +13,8 @@ class Path extends Model
 
     public function setArrayZero()
     {
-        for ($i = 0; $i < 10; $i++) {
-            for ($j = 0; $j < 10; $j++) {
+        for ($i = 0; $i < 11; $i++) {
+            for ($j = 0; $j < 11; $j++) {
                 $this->map[$i][$j] = 0;
             }
         }
@@ -24,10 +24,8 @@ class Path extends Model
     {
         $this->setArrayZero();
 
-        dd($this->map);
-
-        for ($i = 0; $i < 10; $i++) {
-            for ($j = 0; $j < 10; $j++) {
+        for ($i = 0; $i < 11; $i++) {
+            for ($j = 0; $j < 11; $j++) {
                 if (abs($i - $j) == 1) {
                     $this->input($i, $j, 1);
                 } else {
@@ -35,6 +33,8 @@ class Path extends Model
                 }
             }
         }
+
+        return $this->getMap();
     }
 
     public function input($row, $column, $value)
@@ -94,8 +94,9 @@ class Path extends Model
             $shortestPathTreeSet[$u] = true;
 
             for ($v = 0; $v < $verticesCount; ++$v)
-                if (!$shortestPathTreeSet[$v] && $graph[$u][$v] && $distance[$u] != $this->INT_MAX && $distance[$u] + $graph[$u][$v] < $distance[$v])
+                if (!$shortestPathTreeSet[$v] && $graph[$u][$v] && $distance[$u] != $this->INT_MAX && $distance[$u] + $graph[$u][$v] < $distance[$v]) {
                     $distance[$v] = $distance[$u] + $graph[$u][$v];
+                }
         }
 
         return $this->PrintResult($distance, $verticesCount);
