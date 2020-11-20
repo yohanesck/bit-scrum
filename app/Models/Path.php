@@ -22,18 +22,24 @@ class Path extends Model
         $nodeStart = $tempStart['NO_NODE'];
         $nodeEnd = $tempEnd['NO_NODE'];
 
+        if ($nodeStart > $nodeEnd) {
+            $reversed = true;
+        } else {
+            $reversed = false;
+        }
+
         if (strtolower($building) == 'mbca') {
             if (strtolower($floor) == '15') {
                 $result = $this->shortestPath($this->generateArrayMBCA15(), $nodeStart, $nodeEnd);
-                return $this->getCoordinateXY($result, $building, $floor);
+                return $this->getCoordinateXY($result, $building, $floor, $reversed);
             } else if (strtolower($floor) == '33') {
                 $result = $this->shortestPath($this->generateArrayMBCA33(), $nodeStart, $nodeEnd);
-                return $this->getCoordinateXY($result, $building, $floor);
+                return $this->getCoordinateXY($result, $building, $floor, $reversed);
             }
         } else if (strtolower($building) == 'wsa2') {
             if (strtolower($floor) == '12b') {
                 $result = $this->shortestPath($this->generateArrayWSA12B(), $nodeStart, $nodeEnd);
-                return $this->getCoordinateXY($result, $building, $floor);
+                return $this->getCoordinateXY($result, $building, $floor, $reversed);
             }
         }
 
@@ -46,7 +52,7 @@ class Path extends Model
         return DB::select($query);
     }
 
-    public function getCoordinateXY($result, $building, $floor)
+    public function getCoordinateXY($result, $building, $floor, $reversed)
     {
         //Get coordinate from table Node by node_id
         $query = "SELECT COORD_X, COORD_Y FROM M_NODE WHERE (BUILDING_NAME LIKE '$building' AND FLOOR = '$floor') AND (";
@@ -61,7 +67,11 @@ class Path extends Model
 
         $query .= ")";
 
-        return DB::select($query);
+        if ($reversed) {
+            return array_reverse(DB::select($query));
+        } else {
+            return DB::select($query);
+        }
     }
 
     /**
@@ -202,20 +212,6 @@ class Path extends Model
         return $arr;
     }
 
-    public function coba()
-    {
-        $distArray[1][2] = 1;
-        $distArray[2][1] = 1;
-        $distArray[2][3] = 1;
-        $distArray[3][2] = 1;
-        $distArray[1][4] = 1;
-        $distArray[4][1] = 1;
-        $distArray[4][3] = 1;
-        $distArray[3][4] = 1;
-        $a = 1;
-        $b = 3;
-        return $this->shortestPath($distArray, $a, $b);
-    }
     /**
      * @param $_distArr
      * @param $a
@@ -249,6 +245,7 @@ class Path extends Model
             $pos = $S[$pos][0];
         }
         $path[] = $a;
+
         $path = array_reverse($path);
 
         return $path;
