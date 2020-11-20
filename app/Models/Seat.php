@@ -51,8 +51,10 @@ class Seat extends Model
         return $query->where('floor', $floor);
     }
 
-    public function getCoordinateBySeatName($seatName)
+    public function getCoordinateBySeatName($building, $floor, $seatName)
     {
-        return DB::select("SELECT COORD_X, COORD_Y, S_EMPLOYEE.NIP FROM T_SEAT, S_EMPLOYEE WHERE SEAT_NAME LIKE '$seatName' AND T_SEAT.NIP = S_EMPLOYEE.NIP");
+        $query = "SELECT COORD_X, COORD_Y, S_EMPLOYEE.NIP FROM T_SEAT LEFT JOIN S_EMPLOYEE ON T_SEAT.NIP = S_EMPLOYEE.NIP WHERE T_SEAT.BUILDING_NAME LIKE '$building' AND T_SEAT.FLOOR LIKE '$floor' AND T_SEAT.SEAT_NAME LIKE '$seatName'";
+
+        return DB::select($query);
     }
 }

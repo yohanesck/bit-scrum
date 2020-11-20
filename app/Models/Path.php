@@ -50,7 +50,7 @@ class Path extends Model
     {
         //Get coordinate from table Node by node_id
         $coordinate = array();
-        
+
         for ($i=0; $i<count($result); $i++) {
             $query = "SELECT NO_NODE, COORD_X, COORD_Y FROM M_NODE WHERE (BUILDING_NAME LIKE '$building' AND FLOOR = '$floor') AND (NO_NODE = " . $result[$i] . ")";
             array_push($coordinate, DB::select($query)[0]);

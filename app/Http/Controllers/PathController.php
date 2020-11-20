@@ -25,7 +25,7 @@ class PathController extends Controller
                 'path' => $this->path->handleRequest($building, $floor, $from, $to),
                 'seat' => [
                     'seat_name' => $to,
-                    'coordinate' => $this->seat->getCoordinateBySeatName($to)
+                    'coordinate' => $this->seat->getCoordinateBySeatName($building, $floor, $to)
                 ]
             ]
         ], 200);
