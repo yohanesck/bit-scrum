@@ -49,19 +49,11 @@ class Path extends Model
     public function getCoordinateXY($result, $building, $floor)
     {
         //Get coordinate from table Node by node_id
-        $arrCoordinate = array();
-
+        $coordinate = array();
+        
         for ($i=0; $i<count($result); $i++) {
-            $query = "SELECT NO_NODE, COORD_X, COORD_Y FROM M_NODE WHERE (BUILDING_NAME LIKE '$building' AND FLOOR = '$floor') AND (NO_NODE = $result[$i])";
-            $data = DB::select($query);
-            dd(array_values($data));
-            array_push($arrCoordinate, $data);
-        }
-
-        dd($arrCoordinate);
-
-        foreach ($arrCoordinate as $item) {
-
+            $query = "SELECT NO_NODE, COORD_X, COORD_Y FROM M_NODE WHERE (BUILDING_NAME LIKE '$building' AND FLOOR = '$floor') AND (NO_NODE = " . $result[$i] . ")";
+            array_push($coordinate, DB::select($query)[0]);
         }
 
         return $coordinate;
@@ -234,7 +226,7 @@ class Path extends Model
         $path = array();
         $pos = $b;
         while($pos != $a){
-            $path[] = "".$pos;
+            $path[] = $pos;
             $pos = $S[$pos][0];
         }
         $path[] = $a;
