@@ -22,24 +22,18 @@ class Path extends Model
         $nodeStart = $tempStart['NO_NODE'];
         $nodeEnd = $tempEnd['NO_NODE'];
 
-        if ($nodeStart > $nodeEnd) {
-            $reversed = true;
-        } else {
-            $reversed = false;
-        }
-
         if (strtolower($building) == 'mbca') {
             if (strtolower($floor) == '15') {
                 $result = $this->shortestPath($this->generateArrayMBCA15(), $nodeStart, $nodeEnd);
-                return $this->getCoordinateXY($result, $building, $floor, $reversed);
+                return $this->getCoordinateXY($result, $building, $floor);
             } else if (strtolower($floor) == '33') {
                 $result = $this->shortestPath($this->generateArrayMBCA33(), $nodeStart, $nodeEnd);
-                return $this->getCoordinateXY($result, $building, $floor, $reversed);
+                return $this->getCoordinateXY($result, $building, $floor);
             }
         } else if (strtolower($building) == 'wsa2') {
             if (strtolower($floor) == '12b') {
                 $result = $this->shortestPath($this->generateArrayWSA12B(), $nodeStart, $nodeEnd);
-                return $this->getCoordinateXY($result, $building, $floor, $reversed);
+                return $this->getCoordinateXY($result, $building, $floor);
             }
         }
 
@@ -48,19 +42,26 @@ class Path extends Model
 
     public function getNodes($param, $building, $floor)
     {
-        $query = "SELECT NO_NODE FROM T_SEAT WHERE (BUILDING_NAME LIKE '$building' AND FLOOR = $floor) AND SEAT_NAME LIKE UPPER('$param')";
+        $query = "SELECT NO_NODE FROM T_SEAT WHERE (BUILDING_NAME LIKE '$building' AND FLOOR LIKE '$floor') AND SEAT_NAME LIKE UPPER('$param')";
         return DB::select($query);
     }
 
-    public function getCoordinateXY($result, $building, $floor, $reversed)
+    public function getCoordinateXY($result, $building, $floor)
     {
         //Get coordinate from table Node by node_id
-        $coordinate = array();
-        
+        $arrCoordinate = array();
+
         for ($i=0; $i<count($result); $i++) {
             $query = "SELECT NO_NODE, COORD_X, COORD_Y FROM M_NODE WHERE (BUILDING_NAME LIKE '$building' AND FLOOR = '$floor') AND (NO_NODE = $result[$i])";
             $data = DB::select($query);
-            array_push($coordinate, $data[0]);
+            dd(array_values($data));
+            array_push($arrCoordinate, $data);
+        }
+
+        dd($arrCoordinate);
+
+        foreach ($arrCoordinate as $item) {
+
         }
 
         return $coordinate;
