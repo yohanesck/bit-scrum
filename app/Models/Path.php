@@ -37,7 +37,7 @@ class Path extends Model
             }
         }
 
-        throw new Exception('Service Unavailable', 503);
+        throw new Exception('Bad Request', 400);
     }
 
     public function getNodes($param, $building, $floor)
@@ -191,7 +191,6 @@ class Path extends Model
         $this->inputArray($arr, 20, 21, 1);
         $this->inputArray($arr, 21, 22, 1);
         $this->inputArray($arr, 22, 2, 1);
-        $this->inputArray($arr, 10, 28, 1);
         $this->inputArray($arr, 28, 27, 1);
         $this->inputArray($arr, 27, 26, 1);
         $this->inputArray($arr, 26, 24, 1);
