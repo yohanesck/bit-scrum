@@ -53,6 +53,6 @@ class Seat extends Model
 
     public function getCoordinateBySeatName($seatName)
     {
-        return DB::select("SELECT COORD_X, COORD_Y FROM T_SEAT WHERE SEAT_NAME LIKE '$seatName'");
+        return DB::select("SELECT NO_NODE, COORD_X, COORD_Y FROM T_SEAT WHERE SEAT_NAME LIKE '$seatName'");
     }
 }
