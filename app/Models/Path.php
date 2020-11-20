@@ -55,23 +55,15 @@ class Path extends Model
     public function getCoordinateXY($result, $building, $floor, $reversed)
     {
         //Get coordinate from table Node by node_id
-        $query = "SELECT NO_NODE, COORD_X, COORD_Y FROM M_NODE WHERE (BUILDING_NAME LIKE '$building' AND FLOOR = '$floor') AND (";
-
+        $coordinate = array();
+        
         for ($i=0; $i<count($result); $i++) {
-            if ($i == 0) {
-                $query .= "NO_NODE = ". intval($result[$i]);
-            } else {
-                $query .= " OR NO_NODE = ". intval($result[$i]);
-            }
+            $query = "SELECT NO_NODE, COORD_X, COORD_Y FROM M_NODE WHERE (BUILDING_NAME LIKE '$building' AND FLOOR = '$floor') AND (NO_NODE = $result[$i])";
+            $data = DB::select($query);
+            array_push($coordinate, $data[0]);
         }
 
-        $query .= ")";
-
-        if ($reversed) {
-            return array_reverse(DB::select($query));
-        } else {
-            return DB::select($query);
-        }
+        return $coordinate;
     }
 
     /**
